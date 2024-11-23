@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<title>Developer index</title>
+
+{% block body %}
+    <h1>Developer index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FullName</th>
+                <th>Position</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Age</th>
+                <th>Salary</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for developer in developers %}
+            <tr>
+                <td>{{ developer.id }}</td>
+                <td>{{ developer.fullName }}</td>
+                <td>{{ developer.position }}</td>
+                <td>{{ developer.email }}</td>
+                <td>{{ developer.phone }}</td>
+                <td>{{ developer.age }}</td>
+                <td>{{ developer.salary }}</td>
+                <td>
+                    <a href="{{ path('app_developer_show', {'id': developer.id}) }}">show</a>
+                    <a href="{{ path('app_developer_edit', {'id': developer.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_developer_new') }}">Create new</a>
+{% endblock %}
